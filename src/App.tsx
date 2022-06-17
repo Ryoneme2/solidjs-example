@@ -20,6 +20,8 @@ const App: Component = () => {
     setPage(page()+1)
     setEpisodes((await fetchEpisodes(`https://rickandmortyapi.com/api/episode?page=${page()}`)).data);
     // window.scrollY = 0;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   };
 
   const handleScroll = () => {

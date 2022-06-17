@@ -13,9 +13,13 @@ const App: Component = () => {
   };
 
   const [episodes, setEpisodes] = createSignal<EpisodeResponse>();
+  const [page, setPage] = createSignal<number>(1);
 
   const fetchMoreImages = async () => {
     //Fetching episodes with axios
+    setPage(page()+1)
+    setEpisodes((await fetchEpisodes(`https://rickandmortyapi.com/api/episode?page=${page()}`)).data);
+    // window.scrollY = 0;
   };
 
   const handleScroll = () => {
